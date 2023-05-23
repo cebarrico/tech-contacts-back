@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @default(uuid())
+  first_name String
+  last_name  String
+  password   String
+  created_at DateTime @default(now())
+  main_email String
+  main_phone String
+  phones     Phone[]
+  emails     Email[]
+
+  @@map("users")
+}
+
+model Contact {
+  id          String   @id @default(uuid())
+  first_name  String
+  last_name   String
+  created_at  DateTime @default(now())
+  main_email  String
+  main_phones String
+  phones      Phone[]
+  emails      Email[]
+
+  @@map("contacts")
+}
+
+model Email {
+  id        String   @id @default(uuid())
+  email     String
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+  contact   Contact? @relation(fields: [contactId], references: [id])
+  contactId String?
+
+  @@map("emails")
+}
+
+model Phone {
+  id        String   @id @default(uuid())
+  phone     String
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+  contact   Contact? @relation(fields: [contactId], references: [id])
+  contactId String?
+
+  @@map("phones")
+}

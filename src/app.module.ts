@@ -3,8 +3,9 @@ import { UsersModule } from './modules/users/users.module';
 import { ContactsModule } from './modules/contacts/contacts.module';
 import { EmailModule } from './modules/email/email.module';
 import { PhoneModule } from './modules/phone/phone.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
-  imports: [UsersModule, ContactsModule, EmailModule, PhoneModule],
+  imports: [UsersModule, ContactsModule, EmailModule, PhoneModule, AuthModule],
 })
 export class AppModule {}

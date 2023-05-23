@@ -7,6 +7,11 @@ import { UserRepository } from './repository/user.repository';
 export class UsersService {
   constructor(private userRepository: UserRepository) {}
 
+  async findByEmail(email: string) {
+    const user = await this.userRepository.findEmail(email);
+    return user;
+  }
+
   async create(createUserDto: CreateUserDto) {
     const user = await this.userRepository.create(createUserDto);
     return user;
