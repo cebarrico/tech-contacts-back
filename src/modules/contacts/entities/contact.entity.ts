@@ -2,7 +2,8 @@ import { randomUUID } from 'node:crypto';
 
 export class Contact {
   readonly id: string;
-  name: string;
+  first_name: string;
+  last_name: string;
   readonly created_at: string;
   user_id: string;
 

@@ -4,6 +4,9 @@ import { User } from '../../entities/user.entity';
 import { UserRepository } from '../user.repository';
 
 export class UserInMemoryRepository implements UserRepository {
+  findEmail(email: string): User | Promise<User> {
+    throw new Error('Method not implemented.');
+  }
   private database: User[] = [];
   create(data: CreateUserDto): Promise<User> | User {
     const newUser = new User();
