@@ -3,15 +3,13 @@ import { Exclude } from 'class-transformer';
 
 export class User {
   readonly id: string;
-  name: string;
+  first_name: string;
+  last_name: string;
+  main_email: string;
+  main_phone: string;
 
   @Exclude()
   password: string;
 
-  readonly created_at: string;
-
-  constructor() {
-    this.id = randomUUID();
-    this.created_at = Date.now().toString();
-  }
+  readonly created_at: Date;
 }
