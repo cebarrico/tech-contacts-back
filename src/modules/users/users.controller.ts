@@ -26,12 +26,6 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
-  // @UseInterceptors(ClassSerializerInterceptor)
-  // @Get()
-  // findAll() {
-  //   return this.usersService.findAll();
-  // }
-
   @UseInterceptors(ClassSerializerInterceptor)
   @Get(':id')
   @UseGuards(JwtAuthGuard)

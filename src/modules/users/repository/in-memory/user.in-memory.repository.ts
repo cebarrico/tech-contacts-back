@@ -2,7 +2,9 @@ import { UpdateUserDto } from './../../dto/update-user.dto';
 import { CreateUserDto } from '../../dto/create-user.dto';
 import { User } from '../../entities/user.entity';
 import { UserRepository } from '../user.repository';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class UserInMemoryRepository implements UserRepository {
   findEmail(email: string): User | Promise<User> {
     throw new Error('Method not implemented.');

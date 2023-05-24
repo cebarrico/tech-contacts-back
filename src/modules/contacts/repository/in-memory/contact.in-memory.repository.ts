@@ -6,7 +6,7 @@ import { ContactRepository } from '../contact.repository';
 export class ContactInMemoryRepository implements ContactRepository {
   private database: Contact[] = [];
 
-  create(data: CreateContactDto): Promise<Contact> | Contact {
+  create(userId: string, data: CreateContactDto): Promise<Contact> | Contact {
     const newContact = new Contact();
     Object.assign(newContact, {
       ...data,
@@ -14,5 +14,21 @@ export class ContactInMemoryRepository implements ContactRepository {
     this.database.push(newContact);
 
     return newContact;
+  }
+
+  findAll(id: string): Contact[] | Promise<Contact[]> {
+    throw new Error('Method not implemented.');
+  }
+
+  findOne(id: string): Contact | Promise<Contact> {
+    throw new Error('Method not implemented.');
+  }
+
+  delete(id: string): void | Promise<void> {
+    throw new Error('Method not implemented.');
+  }
+
+  update(id: string, data: UpdateContactDto): Contact | Promise<Contact> {
+    throw new Error('Method not implemented.');
   }
 }
