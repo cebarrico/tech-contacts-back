@@ -24,14 +24,10 @@ import 'dotenv/config';
   controllers: [AuthController],
   providers: [
     AuthService,
-    LocalStrategy,
     JwtStrategy,
+    LocalStrategy,
     UsersService,
     PrismaService,
-    {
-      provide: UserRepository,
-      useClass: UserPrismaRepository,
-    },
   ],
 })
 export class AuthModule {}

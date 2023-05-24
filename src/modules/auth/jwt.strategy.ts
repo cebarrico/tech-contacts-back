@@ -1,6 +1,7 @@
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';
 import { Injectable } from '@nestjs/common';
+
 import 'dotenv/config';
 
 interface IPayload {
@@ -17,7 +18,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       secretOrKey: process.env.SECRET_KEY,
     });
   }
+
   async validate(payload: IPayload) {
-    return { id: payload.sub, email: payload.email };
+    return { sub: payload.sub, email: payload.email };
   }
 }
