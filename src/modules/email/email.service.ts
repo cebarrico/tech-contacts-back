@@ -1,26 +1,50 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateEmailDto } from './dto/create-email.dto';
 import { UpdateEmailDto } from './dto/update-email.dto';
+import { EmailRepository } from './repository/email.repository';
 
 @Injectable()
 export class EmailService {
-  create(createEmailDto: CreateEmailDto) {
-    return 'This action adds a new email';
+  constructor(private emailRepository: EmailRepository) {}
+
+  async create(createEmailDto: CreateEmailDto) {
+    const email = await this.emailRepository.create(createEmailDto);
+    return email;
   }
 
-  findAll() {
-    return `This action returns all email`;
+  async findAll(ownerId: string) {
+    const emails = await this.emailRepository.findAll(ownerId);
+    return emails;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} email`;
+  async findOne(id: string) {
+    const findEmail = await this.emailRepository.findOne(id);
+
+    if (!findEmail) {
+      throw new NotFoundException('Email not found');
+    }
+    return findEmail;
   }
 
-  update(id: number, updateEmailDto: UpdateEmailDto) {
-    return `This action updates a #${id} email`;
+  async update(id: string, updateEmailDto: UpdateEmailDto) {
+    const findEmail = await this.emailRepository.findOne(id);
+
+    if (!findEmail) {
+      throw new NotFoundException('Email not found');
+    }
+    const email = await this.emailRepository.update(id, updateEmailDto);
+    return email;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} email`;
+  async remove(id: string) {
+    const findEmail = await this.emailRepository.findOne(id);
+
+    if (!findEmail) {
+      throw new NotFoundException('Email not found');
+    }
+
+    const email = await this.emailRepository.delete(id);
+
+    return;
   }
 }
