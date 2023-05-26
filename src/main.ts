@@ -10,10 +10,8 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('KenzieContacts')
     .setDescription('Api de contatos para os usuários.')
-    .addTag('users')
-    .addTag('contacts')
-    .addTag('email')
-    .addTag('phone')
+    .setVersion('1.0')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

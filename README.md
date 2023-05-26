@@ -32,6 +32,14 @@
 $ npm install
 ```
 
+## Configuration
+
+```
+Create an .env file at the root of the project and fill it with the settings from the .env.example file replacing it with your information
+##
+Crie um arquivo .env na raiz do projeto e preencha com as configuracoes do arquivo .env.example subistituindo por suas informacoes
+```
+
 ## Running the app
 
 ```bash
@@ -47,24 +55,11 @@ $ npm run start:prod
 
 ## Documentations
 
-<a href="http://localhost:3000/doc">localhost:3000/doc</a>
+<a href="http://localhost:5000/doc">localhost:5000/doc</a>
 
 ```
-# localhost:3000/doc
+# localhost:5000/doc
 
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
 ## Support
