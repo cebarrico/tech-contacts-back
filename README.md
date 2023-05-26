@@ -32,12 +32,15 @@
 $ npm install
 ```
 
-## Configuration
+## Database Configuration
 
-```
-Create an .env file at the root of the project and fill it with the settings from the .env.example file replacing it with your information
+```bash
+#Create an .env file at the root of the project and fill it with the settings from the .env.example file replacing it with your information
 ##
-Crie um arquivo .env na raiz do projeto e preencha com as configuracoes do arquivo .env.example subistituindo por suas informacoes
+#Crie um arquivo .env na raiz do projeto e preencha com as configuracoes do arquivo .env.example subistituindo por suas informacoes
+
+# then run the command
+$ npx prisma migrate dev
 ```
 
 ## Running the app
