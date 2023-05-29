@@ -31,41 +31,6 @@ export class UserPrismaRepository implements UserRepository {
   async findOne(id: string): Promise<User> {
     const user = await this.prisma.user.findUnique({
       where: { id },
-      include: {
-        contacts: {
-          select: {
-            id: true,
-            first_name: true,
-            last_name: true,
-            main_email: true,
-            main_phone: true,
-            emails: {
-              select: {
-                id: true,
-                email: true,
-              },
-            },
-            phones: {
-              select: {
-                id: true,
-                phone: true,
-              },
-            },
-          },
-        },
-        emails: {
-          select: {
-            id: true,
-            email: true,
-          },
-        },
-        phones: {
-          select: {
-            id: true,
-            phone: true,
-          },
-        },
-      },
     });
     return plainToInstance(User, user);
   }
