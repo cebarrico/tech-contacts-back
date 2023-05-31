@@ -3,5 +3,5 @@
 set -o errexit
 
 npm install
-npm build
+npm run build
 npx prisma migrate dev deploy
